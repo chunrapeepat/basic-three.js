@@ -42,12 +42,12 @@
     let geometry = new THREE.BoxGeometry(1, 1, 1)
     // create a material
     let material = new THREE.MeshFaceMaterial([
-      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
-      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
-      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
-      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
-      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
-      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
     ])
     let cube = new THREE.Mesh(geometry, material)
 
@@ -55,11 +55,16 @@
 
     camera.position.z = 3
 
+    // add ambient light
+    let ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.5)
+    scene.add(ambientLight)
+
     // the game logic
     const update = () => {
       // rotating the box
       // cube.rotation.x += 0.01
       // cube.rotation.y -= 0.01
+      ambientLight.intensity = Math.sin(Date.now() * 0.005) * 2 + 3
     }
 
     // render the scene
