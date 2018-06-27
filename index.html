@@ -26,6 +26,15 @@
     renderer.setSize(window.innerWidth, window.innerHeight)
     document.body.appendChild(renderer.domElement)
 
+    // update viewport
+    window.addEventListener('resize', () => {
+      const width = window.innerWidth
+      const height = window.innerHeight
+      renderer.setSize(width, height)
+      camera.aspect = width / height
+      camera.updateProjectionMatrix()
+    })
+
     // create geometry
     let geometry = new THREE.BoxGeometry(1, 1, 1)
     // create a material
