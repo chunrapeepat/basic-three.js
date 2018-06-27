@@ -26,10 +26,21 @@
     renderer.setSize(window.innerWidth, window.innerHeight)
     document.body.appendChild(renderer.domElement)
 
+    // create geometry
+    let geometry = new THREE.BoxGeometry(1, 1, 1)
+    // create a material
+    let material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true})
+    let cube = new THREE.Mesh(geometry, material)
+
+    scene.add(cube)
+
+    camera.position.z = 3
 
     // the game logic
     const update = () => {
-
+      // rotating the box
+      cube.rotation.x += 0.01
+      cube.rotation.y -= 0.01
     }
 
     // render the scene
