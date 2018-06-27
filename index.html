@@ -41,7 +41,14 @@
     // create geometry
     let geometry = new THREE.BoxGeometry(1, 1, 1)
     // create a material
-    let material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true})
+    let material = new THREE.MeshFaceMaterial([
+      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+      new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('assets/dirt_texture.jpg'), side: THREE.DoubleSide}),
+    ])
     let cube = new THREE.Mesh(geometry, material)
 
     scene.add(cube)
